@@ -1,0 +1,137 @@
+  /* CODIJO JAVA*/
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Main.java to edit this template
+ */
+package dibujo;
+
+
+import javax.swing.*;
+import java.awt.*;
+
+public class Dibujo extends JPanel {
+
+    // Clase interna Punto
+    static class Punto {
+        int x, y;
+
+        public Punto(int x, int y) {
+            this.x = x;
+            this.y = y;
+        }
+    }
+
+    // Clase interna Linea
+    static class Linea {
+        Punto p1, p2;
+
+        public Linea(Punto p1, Punto p2) {
+            this.p1 = p1;
+            this.p2 = p2;
+        }
+
+        public void dibujar(Graphics g) {
+            g.drawLine(p1.x, p1.y, p2.x, p2.y);
+        }
+    }
+
+    // Clase interna Circulo
+    static class Circulo {
+        Punto centro;
+        int radio;
+
+        public Circulo(Punto centro, int radio) {
+            this.centro = centro;
+            this.radio = radio;
+        }
+
+        public void dibujar(Graphics g) {
+            g.drawOval(centro.x - radio, centro.y - radio, radio * 2, radio * 2);
+        }
+    }
+
+    // Variables para las figuras
+    private Linea linea;
+    private Circulo circulo;
+
+    // Constructor que crea las figuras
+    public Dibujo() {
+        Punto p1 = new Punto(50, 50);
+        Punto p2 = new Punto(200, 200);
+        linea = new Linea(p1, p2);
+
+        Punto centro = new Punto(150, 150);
+        circulo = new Circulo(centro, 50);
+    }
+
+    // Método para dibujar las figuras en el panel
+    @Override
+    protected void paintComponent(Graphics g) {
+        super.paintComponent(g);
+        linea.dibujar(g);
+        circulo.dibujar(g);
+    }
+
+    public static void main(String[] args) {
+        JFrame frame = new JFrame("Línea y Círculo");
+        Dibujo panel = new Dibujo();
+
+        frame.add(panel);
+        frame.setSize(400, 400);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setVisible(true);
+    }
+}
+
+
+#CODIGO PYTHON
+import tkinter as tk
+
+# Clase para representar un Punto
+class Punto:
+    def __init__(self, x, y):
+        self.x = x
+        self.y = y
+
+# Clase para representar una Línea
+class Linea:
+    def __init__(self, p1, p2):
+        self.p1 = p1
+        self.p2 = p2
+
+    def dibujar(self, canvas):
+        canvas.create_line(self.p1.x, self.p1.y, self.p2.x, self.p2.y)
+
+# Clase para representar un Círculo
+class Circulo:
+    def __init__(self, centro, radio):
+        self.centro = centro
+        self.radio = radio
+
+    def dibujar(self, canvas):
+        canvas.create_oval(self.centro.x - self.radio, self.centro.y - self.radio,
+                           self.centro.x + self.radio, self.centro.y + self.radio)
+
+# Crear la ventana principal
+root = tk.Tk()
+root.title("Línea y Círculo")
+
+# Crear el canvas para dibujar
+canvas = tk.Canvas(root, width=400, height=400)
+canvas.pack()
+
+# Crear los objetos de las figuras
+p1 = Punto(50, 50)
+p2 = Punto(200, 200)
+linea = Linea(p1, p2)
+
+centro = Punto(150, 150)
+circulo = Circulo(centro, 50)
+
+# Dibujar las figuras
+linea.dibujar(canvas)
+circulo.dibujar(canvas)
+
+# Ejecutar la aplicación
+root.mainloop()
+
