@@ -1,0 +1,74 @@
+class Cola:
+    def __init__(self, n):
+        self.n = n
+        self.arreglo = [None] * n
+        self.inicio = -1
+        self.fin = -1
+
+    def insert(self, e):
+        if self.isFull():
+            print("----------COLA LLENA--------")
+            return
+        if self.isEmpty():
+            self.inicio = 0
+            self.fin = 0
+        elif self.fin == self.n - 1:
+            self.fin = 0
+        else:
+            self.fin += 1
+        self.arreglo[self.fin] = e
+
+    def remove(self):
+        if self.isEmpty():
+            print("----------COLA VACIA--------")
+            return -1
+        elemento = self.arreglo[self.inicio]
+
+        if self.inicio == self.fin:
+            self.inicio = -1
+            self.fin = -1
+        elif self.inicio == self.n - 1:
+            self.inicio = 0
+        else:
+            self.inicio += 1
+
+        return elemento
+
+    def peek(self):
+        if self.isEmpty():
+            print("----------COLA VACIA--------")
+            return -1
+        return self.arreglo[self.inicio]
+
+    def isEmpty(self):
+        return self.inicio == -1
+
+    def isFull(self):
+        if self.isEmpty():
+            return False
+        if self.inicio == 0 and self.fin == self.n - 1:
+            return True
+        return self.fin + 1 == self.inicio
+
+    def size(self):
+        if self.isEmpty():
+            return 0
+        if self.fin >= self.inicio:
+            return self.fin - self.inicio + 1
+        return (self.n - self.inicio) + (self.fin + 1)
+
+
+if __name__ == "__main__":
+    cola = Cola(5)
+
+    cola.insert(6)
+    cola.insert(18)
+    cola.insert(27)
+    cola.insert(34)
+    cola.insert(49)
+
+    print(cola.remove())  
+    print(cola.remove())  
+    print(cola.remove())  
+    print(cola.remove())  
+    print(cola.remove())  
