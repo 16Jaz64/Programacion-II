@@ -1,0 +1,28 @@
+import math
+def calcular_area(*args):
+    if len(args) == 1 and isinstance(args[0], (int, float)):
+        radio = args[0]
+        return math.pi * radio*radio
+    elif len(args) == 2 and all(isinstance(x, (int, float)) for x in args):
+        base, altura = args
+        return base*altura
+    elif len(args) == 2 and all(isinstance(x, (int, float)) for x in args):
+        base, altura = args
+        return (base * altura) / 2
+    elif len(args) == 3 and all(isinstance(x, (int, float)) for x in args):
+        base1, base2, altura = args
+        return ((base1 + base2) * altura) / 2
+    
+    elif len(args) == 2 and all(isinstance(x, (int, float)) for x in args):
+        perimetro, apotema = args
+        return (perimetro* apotema) / 2
+    
+    else:
+        raise NotImplementedError("No se puede calcular el área para esta combinación de parámetros")
+
+# Ejemplos de uso
+print("Área del círculo :", calcular_area(3))
+print("Área del rectángulo :", calcular_area(9, 4))
+print("Área del triángulo rectángulo :", calcular_area(6, 5))
+print("Área del trapecio :", calcular_area(6,4, 7))
+print("Área del pentágono :", calcular_area(12, 3))
