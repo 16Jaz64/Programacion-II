@@ -20,7 +20,7 @@ def calcular_area(*args):
     else:
         raise NotImplementedError("No se puede calcular el área para esta combinación de parámetros")
 
-# Ejemplos de uso
+
 print("Área del círculo :", calcular_area(3))
 print("Área del rectángulo :", calcular_area(9, 4))
 print("Área del triángulo rectángulo :", calcular_area(6, 5))
