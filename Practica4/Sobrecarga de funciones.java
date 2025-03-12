@@ -12,9 +12,10 @@ public class FigurasGeometricas {
     double area(double radio){
         return Math.PI*radio*radio;
     }
-    double area(double base,double altura){
-        return base*altura;
+    double area(int base, int altura) {
+        return base * altura;
     }
+
     double area(float base, float altura){
         return (base*altura)/2;
     }
@@ -38,7 +39,7 @@ public class FigurasGeometricas {
         System.out.println("EL AREA DEL RECTANGULO ES: "+f2.area(9, 4));
         System.out.println("EL AREA DEL TRIANGULO RECTANGULO ES: "+f3.area(6, 5));
         System.out.println("EL AREA DEL TRAPECIO ES: "+f4.area(6, 4, 7));
-        System.out.println("EL AREA DEL PENTAGONO ES: "+f5.area(12, 3));
+        System.out.println("EL AREA DEL PENTAGONO ES: "+f5.area(5, 3));
         // TODO code application logic here
     }
     
