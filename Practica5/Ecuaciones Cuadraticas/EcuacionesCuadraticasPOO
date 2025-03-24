@@ -1,0 +1,71 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Main.java to edit this template
+ */
+package ecuacionescuadraticaspoo;
+import java.util.Scanner;
+/**
+ *
+ * @author CINTHIA
+ */
+public class EcuacionesCuadraticasPOO {
+    private double a,b,c;
+    public EcuacionesCuadraticasPOO(double a, double b, double c){
+        this.a=a;
+        this.b=b;
+        this.c=c;
+    }
+    public double getDiscriminante(){
+        return (this.b*this.b)-(4*this.a*this.c);
+    } 
+    public double getRaiz1(){
+        return (- this.b + Math.sqrt(this.getDiscriminante()))/2 * this.a;
+    }
+    public double getRaiz2(){
+        return (- this.b - Math.sqrt(this.getDiscriminante()))/2 * this.a;
+    }
+    public void resolverEcuacion(){
+        if(this.getDiscriminante()>0){
+            double raiz1 = this.getRaiz1();
+            double raiz2 = this.getRaiz2();
+            System.out.printf("LA ECUACION TIENE DOS RAICES: %.6f y %.6f\n", raiz1, raiz2);
+        }
+        else if(this.getDiscriminante() == 0){
+            double raizUnica= this.getRaiz1();
+            System.out.printf("LA ECUACION TIENE UNA RAIZ: %.0f\n", raizUnica);
+        }
+        else{
+            System.out.println("LA ECUACION NO TIENE RAICES REALES");
+        }
+    }
+    public static double[] valores(Scanner scanner) {
+        double[] valores = new double[3];
+        System.out.print("Ingrese los valores de a, b, c: ");
+        String entrada = scanner.nextLine();
+        String[] partes = entrada.split(" ");  
+        for (int i = 0; i < 3; i++) {
+            valores[i] = Double.parseDouble(partes[i]);
+        }
+
+        return valores;
+    }
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String[] args) {
+        // TODO code application logic here
+        Scanner scanner = new Scanner(System.in);
+        double[] valores1 = valores(scanner); 
+        EcuacionesCuadraticasPOO e1 = new EcuacionesCuadraticasPOO(valores1[0], valores1[1], valores1[2]); 
+        double[] valores2 = valores(scanner); 
+        EcuacionesCuadraticasPOO e2 = new EcuacionesCuadraticasPOO(valores2[0], valores2[1], valores2[2]);
+        double[] valores3 = valores(scanner); 
+        EcuacionesCuadraticasPOO e3 = new EcuacionesCuadraticasPOO(valores3[0], valores3[1], valores3[2]);
+        e1.resolverEcuacion();
+        e2.resolverEcuacion();
+        e3.resolverEcuacion();
+        scanner.close();  //
+        
+    }
+    
+}
